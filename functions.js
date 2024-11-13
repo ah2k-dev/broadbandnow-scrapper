@@ -34,15 +34,9 @@ const broadbandnowscrapper = async (zip, type) => {
         console.log(link);
         console.log("Navigating to business tab");
         await page.goto(link);
-        // await page.waitForNavigation();
         content = await page.content();
     }
 
-    // save the content to a html file
-    // const fs = require("fs");
-    // fs.writeFileSync("broadbandnow.html", content);
-
-    // parse data with cheerio function
     const providers = parseData(content);
     return providers;
   } catch (error) {
