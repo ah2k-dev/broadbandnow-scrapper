@@ -30,7 +30,7 @@ router.route("/fetch-providers/:zip").get(async (req, res) => {
     }
     const data = await broadbandnowscrapper(req.params.zip, type);
     res.json(data);
-    redis.set(key, JSON.stringify(data), "EX", 60 * 60 * 24);
+    redis.set(key, JSON.stringify(data), "EX", 60 * 60 * 24 * 7);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
